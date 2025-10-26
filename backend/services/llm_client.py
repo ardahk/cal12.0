@@ -6,16 +6,20 @@ settings = get_settings()
 
 class LLMClient:
     """
-    LLM Client for calling different AI models
-    In production, this would make real API calls to Claude, GPT-4, and Gemini
-    For now, returns mock responses to demonstrate the architecture
+    LLM Client for calling Claude and Gemini AI models
+
+    MOCK MODE (default): Returns mock responses for demo
+    PRODUCTION MODE: Uncomment initialization code and API calls below
     """
 
     def __init__(self):
-        # In production, initialize clients here:
+        # PRODUCTION MODE: Uncomment these lines when you have API keys
+        # import anthropic
+        # from google import generativeai as genai
+        #
         # self.anthropic_client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
-        # self.openai_client = openai.AsyncOpenAI(api_key=settings.openai_api_key)
-        # etc.
+        # genai.configure(api_key=settings.google_ai_api_key)
+        # self.gemini_model = genai.GenerativeModel('gemini-pro')
         pass
 
     async def call_claude(self, prompt: str, model: str = "claude-sonnet-4-20250514", temperature: float = 0.7) -> str:
@@ -41,30 +45,6 @@ class LLMClient:
         print(f"[MOCK] Claude called with model: {model}")
         return self._mock_response("claude", prompt)
 
-    async def call_gpt(self, prompt: str, model: str = "gpt-4-turbo-preview", temperature: float = 0.7) -> str:
-        """
-        Call GPT-4 API
-
-        PRODUCTION CODE (uncomment when API keys are set):
-        ```python
-        try:
-            response = await self.openai_client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "You are an expert trading AI."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=temperature
-            )
-            return response.choices[0].message.content
-        except Exception as e:
-            print(f"GPT API error: {e}")
-            return json.dumps({"error": str(e)})
-        ```
-        """
-        # MOCK RESPONSE - Replace with real API call
-        print(f"[MOCK] GPT called with model: {model}")
-        return self._mock_response("gpt", prompt)
 
     async def call_gemini(self, prompt: str, temperature: float = 0.7) -> str:
         """

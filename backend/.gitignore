@@ -1,0 +1,24 @@
+# Environment variables - CRITICAL: Never commit API keys!
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Results
+simulation_results.json

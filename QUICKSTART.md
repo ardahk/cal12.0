@@ -39,10 +39,10 @@ npm run dev
 
 ## What You'll See
 
-1. **Agent Status Cards** - 6 AI agents ready to trade
+1. **Agent Status Cards** - 5 AI agents ready to trade (2 analysts, 1 debate team, 2 traders)
 2. **Simulation Controls** - Run a simulation with AAPL, MSFT, or NVDA
 3. **Debate Viewer** - Watch bull vs bear AI debates (click "Run Debate")
-4. **Performance Charts** - See which AI model trades best
+4. **Performance Charts** - See which AI model (Claude vs Gemini) trades best
 
 ## Current Mode: Mock Data
 
@@ -57,7 +57,6 @@ The app currently uses **mock LLM responses** for demonstration. This lets you:
 ### Step 1: Get API Keys
 
 - **Anthropic (Claude)**: https://console.anthropic.com/
-- **OpenAI (GPT-4)**: https://platform.openai.com/
 - **Google (Gemini)**: https://ai.google.dev/
 
 ### Step 2: Add to Backend
@@ -68,12 +67,14 @@ cp .env.example .env
 # Edit .env and add your keys
 ```
 
+**⚠️ IMPORTANT**: Your .env file is protected by .gitignore and will NEVER be committed to git!
+
 ### Step 3: Enable Real API Calls
 
 In `backend/services/llm_client.py`:
-1. Find the `# PRODUCTION CODE` comments
+1. Find the `# PRODUCTION MODE` comments
 2. Uncomment the real API call code
-3. Comment out the `_mock_response()` calls
+3. Comment out the mock response code
 
 In `backend/services/data_loader.py`:
 1. Uncomment the `yfinance` call in `load_market_data()`
@@ -151,13 +152,26 @@ npm cache clean --force
 1. **Run a Debate**: Click "Run Debate" to see bull vs bear arguments
 2. **Start a Simulation**: Pick AAPL, 2020-07-01 to 2020-07-10
 3. **Check API Docs**: http://localhost:8000/docs
-4. **View Agent Status**: See all 6 agents on the homepage
-5. **Compare Models**: See which AI (Claude/GPT/Gemini) trades best
+4. **View Agent Status**: See all 5 agents on the homepage
+5. **Compare Models**: See which AI (Claude/Gemini) trades best
+
+## API Keys Security
+
+**Your API keys are protected:**
+- ✅ `.gitignore` prevents committing .env files
+- ✅ Never hardcode keys in source code
+- ✅ .env.example shows format without exposing keys
+- ✅ Backend and frontend both have .gitignore files
+
+**What's protected:**
+- `backend/.env`
+- `frontend/.env.local`
+- Any file ending in `.env` or `.env.*`
 
 ## Next Steps
 
 - Read the full [README.md](README.md) for architecture details
-- Check [claude/](claude/) directory for project documentation
+- Check [API_INTEGRATION_GUIDE.md](API_INTEGRATION_GUIDE.md) for enabling real APIs
 - Explore the code - it's well commented!
 - Add your API keys to use real AI models
 

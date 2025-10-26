@@ -99,7 +99,6 @@ export async function getAgentsStatus(): Promise<any> {
       debate_team: { name: 'Debate Team', model: 'claude-sonnet-4', status: 'active' },
       traders: [
         { name: 'Claude Trader', model: 'claude', status: 'active', cash: '$10,000.00', positions: 0 },
-        { name: 'GPT-4 Trader', model: 'gpt', status: 'active', cash: '$10,000.00', positions: 0 },
         { name: 'Gemini Trader', model: 'gemini', status: 'active', cash: '$10,000.00', positions: 0 },
       ],
     };
@@ -262,14 +261,6 @@ export async function getSimulationSummary(): Promise<SimulationSummary> {
           total_return: 850,
           total_return_pct: 8.5,
           total_trades: 12,
-        },
-        {
-          name: 'GPT-4 Trader',
-          model: 'gpt',
-          final_value: 10620,
-          total_return: 620,
-          total_return_pct: 6.2,
-          total_trades: 10,
         },
         {
           name: 'Gemini Trader',

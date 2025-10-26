@@ -3,9 +3,8 @@ from functools import lru_cache
 from typing import List
 
 class Settings(BaseSettings):
-    # API Keys
+    # API Keys - NEVER COMMIT THESE TO GIT!
     anthropic_api_key: str = ""
-    openai_api_key: str = ""
     google_ai_api_key: str = ""
 
     # Trading Config
