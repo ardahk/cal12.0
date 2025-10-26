@@ -130,10 +130,9 @@ async def _run_simulation_task(
         sentiment = SentimentAnalyst()
         debate = DebateTeam()
 
-        # Initialize traders
+        # Initialize traders (Claude and Gemini only)
         traders = [
             Trader(model_type="claude", name="Claude Trader"),
-            Trader(model_type="gpt", name="GPT-4 Trader"),
             Trader(model_type="gemini", name="Gemini Trader")
         ]
 

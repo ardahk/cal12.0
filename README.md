@@ -1,15 +1,16 @@
 # LLM Trading Arena
 
-A full-stack multi-agent AI trading system where different AI models (Claude, GPT-4, Gemini) compete in stock trading using a unique **debate mechanism** for decision making.
+A full-stack multi-agent AI trading system where different AI models (Claude, Gemini) compete in stock trading using a unique **debate mechanism** for decision making.
 
 ## 🎯 Key Features
 
 - **Multi-Agent System**: Technical Analyst, Sentiment Analyst, Debate Team, and Traders
 - **Debate Mechanism**: Bull vs Bear debates before each trading decision (KEY INNOVATION)
-- **Multiple LLM Comparison**: Claude, GPT-4, and Gemini compete side-by-side
+- **Multiple LLM Comparison**: Claude and Gemini compete side-by-side
 - **Real Data**: Uses historical stock prices and sentiment data from Reddit/Twitter
 - **Full Stack**: FastAPI backend + Next.js frontend
 - **Explainable AI**: Every decision is backed by visible reasoning
+- **API Keys Protected**: .gitignore configured to never commit sensitive keys
 
 ## 📁 Project Structure
 
@@ -25,7 +26,7 @@ cal12.0/
 │   │   ├── agents.py       # Agent status and analysis endpoints
 │   │   └── simulation.py   # Simulation control endpoints
 │   ├── services/           # Core services
-│   │   ├── llm_client.py   # LLM API client (Claude, GPT, Gemini)
+│   │   ├── llm_client.py   # LLM API client (Claude, Gemini)
 │   │   └── data_loader.py  # Data loading and processing
 │   ├── data/               # Historical data
 │   │   ├── reddit_sentiment.csv
@@ -86,7 +87,6 @@ cal12.0/
    cp .env.example .env
    # Edit .env and add your API keys:
    # ANTHROPIC_API_KEY=your_key
-   # OPENAI_API_KEY=your_key
    # GOOGLE_AI_API_KEY=your_key
    ```
 
@@ -160,7 +160,6 @@ The backend currently uses **mock LLM responses** for demonstration. To make it 
 1. **Add API Keys** to `backend/.env`:
    ```
    ANTHROPIC_API_KEY=sk-ant-...
-   OPENAI_API_KEY=sk-...
    GOOGLE_AI_API_KEY=...
    ```
 
@@ -216,7 +215,7 @@ After simulation completes, see:
 - `Trader`: Makes trading decisions (3 instances with different LLMs)
 
 **Services**:
-- `LLMClient`: Handles API calls to Claude, GPT-4, Gemini
+- `LLMClient`: Handles API calls to Claude and Gemini
 - `DataLoader`: Loads and processes market + sentiment data
 
 ### Frontend (Next.js/React)
@@ -296,7 +295,7 @@ The system is designed to work in two modes:
 - Perfect for development and demonstration
 
 **Production Mode**:
-- Requires API keys for Claude, GPT-4, Gemini
+- Requires API keys for Claude and Gemini
 - Fetches real market data via yfinance
 - See "Making Endpoints Functional" section above
 
@@ -352,7 +351,7 @@ This project is for educational and demonstration purposes.
 
 - Built for Cal Hacks hackathon
 - Based on TradingAgents research
-- Uses Claude, GPT-4, and Gemini APIs
+- Uses Claude and Gemini APIs
 - Market data from yfinance
 - Sentiment data from Kaggle
 

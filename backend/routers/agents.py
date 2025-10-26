@@ -9,9 +9,8 @@ technical_analyst = TechnicalAnalyst()
 sentiment_analyst = SentimentAnalyst()
 debate_team = DebateTeam()
 
-# Initialize traders with different models
+# Initialize traders with different models (Claude and Gemini only)
 claude_trader = Trader(model_type="claude", name="Claude Trader")
-gpt_trader = Trader(model_type="gpt", name="GPT-4 Trader")
 gemini_trader = Trader(model_type="gemini", name="Gemini Trader")
 
 @router.get("/status")
@@ -29,7 +28,6 @@ async def get_agents_status():
         "debate_team": debate_team.get_status(),
         "traders": [
             claude_trader.get_status(),
-            gpt_trader.get_status(),
             gemini_trader.get_status()
         ]
     }
@@ -110,11 +108,10 @@ async def get_portfolio(trader_name: str):
     **API Integration Point**: Call from frontend to show trader portfolios
 
     Args:
-        trader_name: One of "claude", "gpt", "gemini"
+        trader_name: One of "claude", "gemini"
     """
     trader_map = {
         "claude": claude_trader,
-        "gpt": gpt_trader,
         "gemini": gemini_trader
     }
 

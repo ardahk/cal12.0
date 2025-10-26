@@ -6,7 +6,7 @@ class Trader:
     """
     Trader Agent
     Makes final trading decisions based on all available analysis
-    Can use different LLM models (Claude, GPT-4, Gemini) for comparison
+    Can use different LLM models (Claude, Gemini) for comparison
     """
 
     def __init__(self, model_type: str = "claude", name: Optional[str] = None):
@@ -14,7 +14,7 @@ class Trader:
         Initialize trader with specific LLM model
 
         Args:
-            model_type: One of "claude", "gpt", "gemini"
+            model_type: One of "claude", "gemini"
             name: Custom name for the trader (defaults to model type)
         """
         self.model_type = model_type
@@ -84,11 +84,9 @@ Respond in JSON format with keys: action, quantity, reasoning, confidence
 """
 
         # Call appropriate LLM based on model_type
-        # TO MAKE FUNCTIONAL: Ensure these make real API calls
+        # TO MAKE FUNCTIONAL: Ensure these make real API calls (see llm_client.py)
         if self.model_type == "claude":
             response = await llm_client.call_claude(prompt, temperature=0.7)
-        elif self.model_type == "gpt":
-            response = await llm_client.call_gpt(prompt, temperature=0.7)
         elif self.model_type == "gemini":
             response = await llm_client.call_gemini(prompt, temperature=0.7)
         else:
